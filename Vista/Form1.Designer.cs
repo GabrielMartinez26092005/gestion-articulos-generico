@@ -146,6 +146,7 @@
             this.Controls.Add(this.btnEliminar);
             this.Name = "Principal";
             this.Text = "Articulos";
+            this.Load += new System.EventHandler(this.Principal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dvgArticulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboImagen)).EndInit();
             this.ResumeLayout(false);
