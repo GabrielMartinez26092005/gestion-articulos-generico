@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.dvgArticulos = new System.Windows.Forms.DataGridView();
+            this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.pboImagen = new System.Windows.Forms.PictureBox();
             this.lblFiltrarNombre = new System.Windows.Forms.Label();
             this.txtFiltrarNombre = new System.Windows.Forms.TextBox();
@@ -38,7 +38,7 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgArticulos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,19 +52,24 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             // 
-            // dvgArticulos
+            // dgvArticulos
             // 
-            this.dvgArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgArticulos.Location = new System.Drawing.Point(12, 51);
-            this.dvgArticulos.Name = "dvgArticulos";
-            this.dvgArticulos.Size = new System.Drawing.Size(556, 194);
-            this.dvgArticulos.TabIndex = 1;
+            this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvArticulos.Location = new System.Drawing.Point(12, 51);
+            this.dgvArticulos.MultiSelect = false;
+            this.dgvArticulos.Name = "dgvArticulos";
+            this.dgvArticulos.ReadOnly = true;
+            this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvArticulos.Size = new System.Drawing.Size(556, 194);
+            this.dgvArticulos.TabIndex = 1;
+            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // pboImagen
             // 
             this.pboImagen.Location = new System.Drawing.Point(574, 51);
             this.pboImagen.Name = "pboImagen";
             this.pboImagen.Size = new System.Drawing.Size(207, 194);
+            this.pboImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pboImagen.TabIndex = 2;
             this.pboImagen.TabStop = false;
             // 
@@ -142,12 +147,12 @@
             this.Controls.Add(this.txtFiltrarNombre);
             this.Controls.Add(this.lblFiltrarNombre);
             this.Controls.Add(this.pboImagen);
-            this.Controls.Add(this.dvgArticulos);
+            this.Controls.Add(this.dgvArticulos);
             this.Controls.Add(this.btnEliminar);
             this.Name = "Principal";
             this.Text = "Articulos";
             this.Load += new System.EventHandler(this.Principal_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dvgArticulos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboImagen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -157,7 +162,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.DataGridView dvgArticulos;
+        private System.Windows.Forms.DataGridView dgvArticulos;
         private System.Windows.Forms.PictureBox pboImagen;
         private System.Windows.Forms.Label lblFiltrarNombre;
         private System.Windows.Forms.TextBox txtFiltrarNombre;

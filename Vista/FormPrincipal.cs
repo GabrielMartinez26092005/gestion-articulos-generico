@@ -12,10 +12,10 @@ using Controlador;
 
 namespace Vista
 {
-    public partial class Principal : Form
+    public partial class FormPrincipal : Form
     {
         private List<Articulo> lista_articulos;
-        public Principal()
+        public FormPrincipal()
         {
             InitializeComponent();
         }
