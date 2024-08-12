@@ -17,5 +17,10 @@ namespace Controlador
         public Categoria Categoria { get; set; }
         public string Imagen { get; set; }
         public decimal Precio { get; set; }
+        public Articulo()
+        {
+            Marca = new Marca();
+            Categoria = new Categoria();
+        }
     }
 }

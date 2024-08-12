@@ -82,5 +82,12 @@ namespace Vista
                 FormDetalles.ShowDialog();
             }
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            FormAgregar form_agregar = new FormAgregar();
+            form_agregar.ShowDialog();
+
+        }
     }
 }
