@@ -19,7 +19,7 @@ namespace Modelo
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string consulta = "select A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion MarcaDescripcion, C.Descripcion CategoriaDescripcion, A.ImagenUrl, A.Precio from ARTICULOS A, MARCAS M, CATEGORIAS C where A.IdMarca = M.Id and A.IdCategoria = C.Id";
+                string consulta = "select A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion MarcaDescripcion, M.Id MarcaId, C.Descripcion CategoriaDescripcion, C.Id CategoriaId, A.ImagenUrl, A.Precio from ARTICULOS A, MARCAS M, CATEGORIAS C where A.IdMarca = M.Id and A.IdCategoria = C.Id";
                 datos.SetearConsulta(consulta);
                 datos.EjecutarConexion();
                 while (datos.Lector.Read())
@@ -33,9 +33,11 @@ namespace Modelo
 
                     auxiliar.Marca = new Marca();
                     auxiliar.Marca.Descripcion = (string)datos.Lector["MarcaDescripcion"];
+                    auxiliar.Marca.Id = (int)datos.Lector["MarcaId"];
 
                     auxiliar.Categoria = new Categoria();
                     auxiliar.Categoria.Descripcion = (string)datos.Lector["CategoriaDescripcion"];
+                    auxiliar.Categoria.Id = (int)datos.Lector["CategoriaId"];
 
                     if (!(datos.Lector["ImagenUrl"] is DBNull))
                         auxiliar.Imagen = (string)datos.Lector["ImagenUrl"];

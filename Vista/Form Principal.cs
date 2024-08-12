@@ -12,10 +12,10 @@ using Controlador;
 
 namespace Vista
 {
-    public partial class Principal : Form
+    public partial class FormPrincipal : Form
     {
         private List<Articulo> lista_articulos;
-        public Principal()
+        public FormPrincipal()
         {
             InitializeComponent();
         }
@@ -70,6 +70,16 @@ namespace Vista
             {
                 Articulo actual = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
                 CargarImagen(actual.Imagen);
+            }
+        }
+
+        private void btnVerDetalles_Click(object sender, EventArgs e)
+        {
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Articulo articulo_actual = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                FormDetalles FormDetalles= new FormDetalles(articulo_actual);
+                FormDetalles.ShowDialog();
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace Vista
 {
-    partial class Principal
+    partial class FormPrincipal
     {
         /// <summary>
         /// Required designer variable.
@@ -45,7 +45,7 @@
             // btnEliminar
             // 
             this.btnEliminar.ForeColor = System.Drawing.Color.Red;
-            this.btnEliminar.Location = new System.Drawing.Point(493, 251);
+            this.btnEliminar.Location = new System.Drawing.Point(536, 251);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 0;
@@ -55,22 +55,22 @@
             // dgvArticulos
             // 
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvArticulos.Location = new System.Drawing.Point(12, 51);
+            this.dgvArticulos.Location = new System.Drawing.Point(15, 51);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.ReadOnly = true;
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulos.Size = new System.Drawing.Size(556, 194);
+            this.dgvArticulos.Size = new System.Drawing.Size(599, 194);
             this.dgvArticulos.TabIndex = 1;
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // pboImagen
             // 
-            this.pboImagen.Location = new System.Drawing.Point(574, 51);
+            this.pboImagen.Location = new System.Drawing.Point(617, 51);
             this.pboImagen.Name = "pboImagen";
-            this.pboImagen.Size = new System.Drawing.Size(207, 194);
-            this.pboImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pboImagen.TabIndex = 2;
+            this.pboImagen.Size = new System.Drawing.Size(164, 194);
+            this.pboImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pboImagen.TabIndex = 10;
             this.pboImagen.TabStop = false;
             // 
             // lblFiltrarNombre
@@ -93,23 +93,24 @@
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(447, 24);
+            this.comboBox1.Location = new System.Drawing.Point(490, 24);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 5;
             // 
             // btnVerDetalles
             // 
-            this.btnVerDetalles.Location = new System.Drawing.Point(250, 251);
+            this.btnVerDetalles.Location = new System.Drawing.Point(293, 251);
             this.btnVerDetalles.Name = "btnVerDetalles";
             this.btnVerDetalles.Size = new System.Drawing.Size(75, 23);
             this.btnVerDetalles.TabIndex = 6;
             this.btnVerDetalles.Text = "Ver Detalles";
             this.btnVerDetalles.UseVisualStyleBackColor = true;
+            this.btnVerDetalles.Click += new System.EventHandler(this.btnVerDetalles_Click);
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(331, 251);
+            this.btnAgregar.Location = new System.Drawing.Point(374, 251);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 7;
@@ -118,7 +119,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(412, 251);
+            this.btnModificar.Location = new System.Drawing.Point(455, 251);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 8;
@@ -129,12 +130,12 @@
             // 
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(320, 24);
+            this.comboBox2.Location = new System.Drawing.Point(363, 24);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 9;
             // 
-            // Principal
+            // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -149,7 +150,7 @@
             this.Controls.Add(this.pboImagen);
             this.Controls.Add(this.dgvArticulos);
             this.Controls.Add(this.btnEliminar);
-            this.Name = "Principal";
+            this.Name = "FormPrincipal";
             this.Text = "Articulos";
             this.Load += new System.EventHandler(this.Principal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
