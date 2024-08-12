@@ -30,7 +30,7 @@
         {
             this.lblCodigo = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.pboImagen = new System.Windows.Forms.PictureBox();
+            this.pboImagenAgregar = new System.Windows.Forms.PictureBox();
             this.txtUrlImagen = new System.Windows.Forms.TextBox();
             this.lblUrlImagen = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
@@ -45,7 +45,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.lblDescripcion = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pboImagen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboImagenAgregar)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCodigo
@@ -64,13 +64,14 @@
             this.txtCodigo.Size = new System.Drawing.Size(219, 20);
             this.txtCodigo.TabIndex = 1;
             // 
-            // pboImagen
+            // pboImagenAgregar
             // 
-            this.pboImagen.Location = new System.Drawing.Point(335, 12);
-            this.pboImagen.Name = "pboImagen";
-            this.pboImagen.Size = new System.Drawing.Size(313, 292);
-            this.pboImagen.TabIndex = 2;
-            this.pboImagen.TabStop = false;
+            this.pboImagenAgregar.Location = new System.Drawing.Point(335, 12);
+            this.pboImagenAgregar.Name = "pboImagenAgregar";
+            this.pboImagenAgregar.Size = new System.Drawing.Size(313, 292);
+            this.pboImagenAgregar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pboImagenAgregar.TabIndex = 2;
+            this.pboImagenAgregar.TabStop = false;
             // 
             // txtUrlImagen
             // 
@@ -78,6 +79,7 @@
             this.txtUrlImagen.Name = "txtUrlImagen";
             this.txtUrlImagen.Size = new System.Drawing.Size(219, 20);
             this.txtUrlImagen.TabIndex = 4;
+            this.txtUrlImagen.TextChanged += new System.EventHandler(this.txtUrlImagen_TextChanged);
             // 
             // lblUrlImagen
             // 
@@ -169,13 +171,14 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.ForeColor = System.Drawing.Color.Red;
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnCancelar.Location = new System.Drawing.Point(240, 281);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 15;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // txtDescripcion
             // 
@@ -212,13 +215,13 @@
             this.Controls.Add(this.lblMarca);
             this.Controls.Add(this.txtUrlImagen);
             this.Controls.Add(this.lblUrlImagen);
-            this.Controls.Add(this.pboImagen);
+            this.Controls.Add(this.pboImagenAgregar);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.lblCodigo);
             this.Name = "FormAgregar";
-            this.Text = "Form_Agregar";
+            this.Text = "Agregar Articulo";
             this.Load += new System.EventHandler(this.FormAgregar_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pboImagen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboImagenAgregar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,7 +231,7 @@
 
         private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.TextBox txtCodigo;
-        private System.Windows.Forms.PictureBox pboImagen;
+        private System.Windows.Forms.PictureBox pboImagenAgregar;
         private System.Windows.Forms.TextBox txtUrlImagen;
         private System.Windows.Forms.Label lblUrlImagen;
         private System.Windows.Forms.Label lblMarca;

@@ -68,7 +68,33 @@ namespace Modelo
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
 
+        public void ModificarArticulo(Articulo articulo_modificado)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = "UPDATE ARTICULOS SET Codigo = @CodigoArticulo, Nombre = @Nombre, Descripcion = @Descripcion, IdMarca = @IdMarca, IdCategoria = @IdCategoria, ImagenUrl = @ImagenUrl, Precio = @Precio WHERE Id = @Id";
+                datos.SetearConsulta(consulta);
+                datos.SetearParametro("@id", articulo_modificado.Id);
+                datos.SetearParametro("@CodigoArticulo", articulo_modificado.CodigoArticulo);
+                datos.SetearParametro("@Nombre", articulo_modificado.Nombre);
+                datos.SetearParametro("@Descripcion", articulo_modificado.Descripcion);
+                datos.SetearParametro("@IdMarca", articulo_modificado.Marca.Id);
+                datos.SetearParametro("@IdCategoria", articulo_modificado.Categoria.Id);
+                datos.SetearParametro("@ImagenUrl", articulo_modificado.Imagen);
+                datos.SetearParametro("@Precio", articulo_modificado.Precio);
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
             finally

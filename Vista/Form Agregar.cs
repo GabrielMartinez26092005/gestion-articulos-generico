@@ -22,20 +22,8 @@ namespace Vista
 
         private void FormAgregar_Load(object sender, EventArgs e)
         {
-            AgregarItemsComboBoxes();
-        }
-        private void AgregarItemsComboBoxes()
-        {
-            cboMarca.Items.Add("Samsung");
-            cboMarca.Items.Add("Apple");
-            cboMarca.Items.Add("Sony");
-            cboMarca.Items.Add("Huawei");
-            cboMarca.Items.Add("Motorola");
-
-            cboCategoria.Items.Add("Celulares");
-            cboCategoria.Items.Add("Televisores");
-            cboCategoria.Items.Add("Media");
-            cboCategoria.Items.Add("Audio");
+            Helper.AgregarItemsComboBoxes(cboMarca, cboCategoria);
+            Helper.CargarImagenPbo(pboImagenAgregar, txtUrlImagen.Text);
         }
         private bool ValidarComboBoxes()
         {
@@ -107,20 +95,20 @@ namespace Vista
                     return;
                 ArticuloNegocio articulo_negocio = new ArticuloNegocio();
                 articulo_negocio.AgregarArticulo(nuevo_articulo);
-                CargaExitosa(true);
+                Helper.ResultadoCarga(true, "Carga del artículo fue exitosa.");
             }
             catch (Exception)
             {
-                CargaExitosa(false);
+                Helper.ResultadoCarga(false, "La carga del artículo no fue exitosa. Por favor, inténtalo de nuevo.");
             }
         }
-        public void CargaExitosa(bool respuesta)
+        private void txtUrlImagen_TextChanged(object sender, EventArgs e)
         {
-            if (respuesta)
-                MessageBox.Show("Carga del artículo exitosa.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else
-                MessageBox.Show("La carga del artículo no fue exitosa. Por favor, inténtalo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Helper.CargarImagenPbo(pboImagenAgregar, txtUrlImagen.Text);
         }
-
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

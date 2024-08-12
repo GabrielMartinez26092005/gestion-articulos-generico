@@ -32,7 +32,7 @@ namespace Vista
                 lista_articulos = articulo_negocio.CrearListaArticulo();
                 dgvArticulos.DataSource = lista_articulos;
                 OcultarColumnas();
-                CargarImagen(dgvArticulos.Columns["Imagen"].ToString());
+                Helper.CargarImagenPbo(pboImagenPrincipal, dgvArticulos.Columns["Imagen"].ToString());
             }
             catch (Exception ex)
             {
@@ -52,33 +52,21 @@ namespace Vista
                 MessageBox.Show(ex.ToString());
             }
         }
-        public void CargarImagen(string imagen)
-        {
-            try
-            {
-                pboImagen.Load(imagen);
-            }
-            catch (Exception)
-            {
-                pboImagen.Load("https://imgs.search.brave.com/1Ndrcvo4NgB8EzJe6cJmYhQD15j4RAPEyzy2mg8NrUE/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cHVibGljZG9tYWlu/cGljdHVyZXMubmV0/L3BpY3R1cmVzLzI4/MDAwMC92ZWxrYS9u/b3QtZm91bmQtaW1h/Z2UtMTUzODM4NjQ3/ODdsdS5qcGc");
-            }
-        }
-
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvArticulos.CurrentRow != null)
+            if (!validarSeleccionado())
             {
                 Articulo actual = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                CargarImagen(actual.Imagen);
+                Helper.CargarImagenPbo(pboImagenPrincipal, actual.Imagen);
             }
         }
 
         private void btnVerDetalles_Click(object sender, EventArgs e)
         {
-            if (dgvArticulos.CurrentRow != null)
+            if (!validarSeleccionado())
             {
-                Articulo articulo_actual = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                FormDetalles FormDetalles= new FormDetalles(articulo_actual);
+                Articulo articulo_seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                FormDetalles FormDetalles= new FormDetalles(articulo_seleccionado);
                 FormDetalles.ShowDialog();
             }
         }
@@ -88,6 +76,22 @@ namespace Vista
             FormAgregar form_agregar = new FormAgregar();
             form_agregar.ShowDialog();
 
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            if (!validarSeleccionado())
+            {
+                Articulo articulo_seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                FormModificar form_modificar = new FormModificar(articulo_seleccionado);
+                form_modificar.ShowDialog();
+            }
+        }
+        private bool validarSeleccionado()
+        {
+            if (dgvArticulos.CurrentRow != null)
+                return false;
+            return true;
         }
     }
 }

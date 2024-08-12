@@ -30,7 +30,7 @@
         {
             this.btnEliminar = new System.Windows.Forms.Button();
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
-            this.pboImagen = new System.Windows.Forms.PictureBox();
+            this.pboImagenPrincipal = new System.Windows.Forms.PictureBox();
             this.lblFiltrarNombre = new System.Windows.Forms.Label();
             this.txtFiltrarNombre = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -39,7 +39,7 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pboImagen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboImagenPrincipal)).BeginInit();
             this.SuspendLayout();
             // 
             // btnEliminar
@@ -64,14 +64,14 @@
             this.dgvArticulos.TabIndex = 1;
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
-            // pboImagen
+            // pboImagenPrincipal
             // 
-            this.pboImagen.Location = new System.Drawing.Point(617, 51);
-            this.pboImagen.Name = "pboImagen";
-            this.pboImagen.Size = new System.Drawing.Size(164, 194);
-            this.pboImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pboImagen.TabIndex = 10;
-            this.pboImagen.TabStop = false;
+            this.pboImagenPrincipal.Location = new System.Drawing.Point(617, 51);
+            this.pboImagenPrincipal.Name = "pboImagenPrincipal";
+            this.pboImagenPrincipal.Size = new System.Drawing.Size(164, 194);
+            this.pboImagenPrincipal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pboImagenPrincipal.TabIndex = 10;
+            this.pboImagenPrincipal.TabStop = false;
             // 
             // lblFiltrarNombre
             // 
@@ -126,6 +126,7 @@
             this.btnModificar.TabIndex = 8;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // comboBox2
             // 
@@ -148,14 +149,14 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.txtFiltrarNombre);
             this.Controls.Add(this.lblFiltrarNombre);
-            this.Controls.Add(this.pboImagen);
+            this.Controls.Add(this.pboImagenPrincipal);
             this.Controls.Add(this.dgvArticulos);
             this.Controls.Add(this.btnEliminar);
             this.Name = "FormPrincipal";
             this.Text = "Articulos";
             this.Load += new System.EventHandler(this.Principal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pboImagen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboImagenPrincipal)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,7 +166,7 @@
 
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.DataGridView dgvArticulos;
-        private System.Windows.Forms.PictureBox pboImagen;
+        private System.Windows.Forms.PictureBox pboImagenPrincipal;
         private System.Windows.Forms.Label lblFiltrarNombre;
         private System.Windows.Forms.TextBox txtFiltrarNombre;
         private System.Windows.Forms.ComboBox comboBox1;
