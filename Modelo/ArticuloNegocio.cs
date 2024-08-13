@@ -102,5 +102,27 @@ namespace Modelo
                 datos.CerrarConexion();
             }
         }
+
+        public void EliminarArticulo(Articulo articulo_seleccionado)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                string consulta = "delete FROM ARTICULOS where id = @id";
+                datos.SetearConsulta(consulta);
+                datos.SetearParametro("@id", articulo_seleccionado.Id);
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+
+        }
     }
 }

@@ -100,5 +100,17 @@ namespace Vista
             else
                 MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        public static bool Advertencia(string mensaje, string titulo)
+        { 
+            DialogResult resultado = MessageBox.Show(mensaje, titulo, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (resultado == DialogResult.Yes)
+            {
+                return false;
+            }
+            return true;
+
+            
+        }
     }
 }

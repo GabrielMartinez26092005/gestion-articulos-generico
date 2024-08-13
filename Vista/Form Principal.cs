@@ -93,5 +93,26 @@ namespace Vista
                 return false;
             return true;
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!validarSeleccionado())
+                {
+                    Articulo articulo_seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    ArticuloNegocio articulo_negocio = new ArticuloNegocio();
+                    if (Helper.Advertencia("¿Seguro desea eliminar un articulo?", "Eliminar"))
+                        return;
+                    articulo_negocio.EliminarArticulo(articulo_seleccionado);
+                    Helper.ResultadoCarga(true, "La eliminacion fue exitosa");
+                }
+            }
+            catch (Exception ex)
+            {
+                Helper.ResultadoCarga(false, ex.ToString());
+            }
+            
+        }
     }
 }
