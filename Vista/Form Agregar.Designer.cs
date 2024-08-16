@@ -60,6 +60,7 @@
             // txtCodigo
             // 
             this.txtCodigo.Location = new System.Drawing.Point(96, 12);
+            this.txtCodigo.MaxLength = 50;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(219, 20);
             this.txtCodigo.TabIndex = 1;
@@ -76,6 +77,7 @@
             // txtUrlImagen
             // 
             this.txtUrlImagen.Location = new System.Drawing.Point(96, 189);
+            this.txtUrlImagen.MaxLength = 1000;
             this.txtUrlImagen.Name = "txtUrlImagen";
             this.txtUrlImagen.Size = new System.Drawing.Size(219, 20);
             this.txtUrlImagen.TabIndex = 4;
@@ -129,6 +131,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(96, 47);
+            this.txtNombre.MaxLength = 50;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(219, 20);
             this.txtNombre.TabIndex = 11;
@@ -183,6 +186,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(96, 82);
+            this.txtDescripcion.MaxLength = 150;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(219, 20);
             this.txtDescripcion.TabIndex = 17;
@@ -219,6 +223,7 @@
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.lblCodigo);
             this.Name = "FormAgregar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Articulo";
             this.Load += new System.EventHandler(this.FormAgregar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pboImagenAgregar)).EndInit();

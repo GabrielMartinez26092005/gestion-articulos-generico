@@ -147,6 +147,7 @@
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.pboImagenDetalles);
             this.Name = "FormDetalles";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalles";
             this.Load += new System.EventHandler(this.Detalles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pboImagenDetalles)).EndInit();

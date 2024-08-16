@@ -23,6 +23,7 @@ namespace Vista
         private void Principal_Load(object sender, EventArgs e)
         {
             CargarDgv();
+            Helper.AgregarItemsComboBoxes(cboMarca, cboCategoria);
         }
         private void CargarDgv()
         {
@@ -113,6 +114,54 @@ namespace Vista
                 Helper.ResultadoCarga(false, ex.ToString());
             }
             
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Helper.ValidarComboBoxes(cboMarca, cboCategoria))
+                    return;
+                int id_marca = Helper.DevolverIdMarca(cboMarca);
+                int id_categoria = Helper.DevolverIdCategoria(cboCategoria);
+                List<Articulo> lista_filtrada = lista_articulos
+                .Where(articulo => articulo.Marca.Id == id_marca && articulo.Categoria.Id == id_categoria)
+                .ToList();
+                dgvArticulos.DataSource = lista_filtrada;
+                OcultarColumnas();
+                Helper.CargarImagenPbo(pboImagenPrincipal, dgvArticulos.Columns["Imagen"].ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            
+            
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            cboCategoria.Items.Clear();
+            cboMarca.Items.Clear();
+            dgvArticulos.DataSource = lista_articulos;
+            OcultarColumnas();
+            Helper.AgregarItemsComboBoxes(cboMarca, cboCategoria);
+        }
+
+        private void txtFiltrarNombre_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = txtFiltrarNombre.Text.Trim();
+            List<Articulo> lista_filtrada;
+            if (!string.IsNullOrWhiteSpace(filtro))
+            {
+                lista_filtrada = lista_articulos.FindAll(articulo => articulo.Nombre.ToLower().Contains(filtro.ToLower()));
+            }
+            else
+            {
+                lista_filtrada = lista_articulos;
+            }
+            dgvArticulos.DataSource = lista_filtrada;
+            OcultarColumnas();
         }
     }
 }

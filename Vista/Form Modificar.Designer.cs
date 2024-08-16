@@ -51,6 +51,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(96, 82);
+            this.txtDescripcion.MaxLength = 150;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(219, 20);
             this.txtDescripcion.TabIndex = 34;
@@ -105,6 +106,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(96, 47);
+            this.txtNombre.MaxLength = 50;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(219, 20);
             this.txtNombre.TabIndex = 28;
@@ -157,6 +159,7 @@
             // txtUrlImagen
             // 
             this.txtUrlImagen.Location = new System.Drawing.Point(96, 189);
+            this.txtUrlImagen.MaxLength = 1000;
             this.txtUrlImagen.Name = "txtUrlImagen";
             this.txtUrlImagen.Size = new System.Drawing.Size(219, 20);
             this.txtUrlImagen.TabIndex = 22;
@@ -183,6 +186,7 @@
             // txtCodigo
             // 
             this.txtCodigo.Location = new System.Drawing.Point(96, 12);
+            this.txtCodigo.MaxLength = 50;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(219, 20);
             this.txtCodigo.TabIndex = 19;
@@ -219,6 +223,7 @@
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.lblCodigo);
             this.Name = "FormModificar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificar Articulo";
             this.Load += new System.EventHandler(this.FormModificar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pboImagenModificar)).EndInit();
