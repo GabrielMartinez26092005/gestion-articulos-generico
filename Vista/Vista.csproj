@@ -65,12 +65,6 @@
     <Compile Include="Form Principal.Designer.cs">
       <DependentUpon>Form Principal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form Modificar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form Modificar.Designer.cs">
-      <DependentUpon>Form Modificar.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form Agregar.resx">
@@ -78,9 +72,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form Detalles.resx">
       <DependentUpon>Form Detalles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form Modificar.resx">
-      <DependentUpon>Form Modificar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form Principal.resx">
       <DependentUpon>Form Principal.cs</DependentUpon>

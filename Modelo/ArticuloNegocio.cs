@@ -5,6 +5,7 @@ using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Controlador;
 using Microsoft.SqlServer.Server;
 using Negocio;
@@ -43,6 +44,62 @@ namespace Modelo
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+        public  List<Marca> CrearListaMarca()
+        {
+            List<Marca> lista = new List<Marca>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.SetearConsulta("Select Id, Descripcion from MARCAS");
+                datos.EjecutarConexion();
+                while (datos.Lector.Read())
+                {
+                    Marca aux = new Marca();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+        public List<Categoria> CrearListaCategoria()
+        {
+            List<Categoria> lista = new List<Categoria>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.SetearConsulta("Select Id, Descripcion from CATEGORIAS");
+                datos.EjecutarConexion();
+
+                while (datos.Lector.Read())
+                {
+                    Categoria aux = new Categoria();
+
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
                 throw ex;
             }
             finally
@@ -126,3 +183,4 @@ namespace Modelo
         }
     }
 }
+

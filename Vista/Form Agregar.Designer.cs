@@ -41,7 +41,7 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.lblPrecio = new System.Windows.Forms.Label();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.lblDescripcion = new System.Windows.Forms.Label();
@@ -161,16 +161,16 @@
             this.lblPrecio.TabIndex = 12;
             this.lblPrecio.Text = "PRECIO:";
             // 
-            // btnAgregar
+            // btnAceptar
             // 
-            this.btnAgregar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnAgregar.Location = new System.Drawing.Point(159, 281);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 14;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnAceptar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnAceptar.Location = new System.Drawing.Point(159, 281);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.TabIndex = 14;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnCancelar
             // 
@@ -208,7 +208,7 @@
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.txtNombre);
@@ -247,7 +247,7 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Label lblPrecio;
-        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Label lblDescripcion;

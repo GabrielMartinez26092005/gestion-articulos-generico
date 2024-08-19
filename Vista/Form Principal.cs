@@ -76,16 +76,19 @@ namespace Vista
         {
             FormAgregar form_agregar = new FormAgregar();
             form_agregar.ShowDialog();
-
+            CargarDgv();
         }
+        
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
             if (!validarSeleccionado())
             {
                 Articulo articulo_seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                FormModificar form_modificar = new FormModificar(articulo_seleccionado);
+                FormAgregar form_modificar = new FormAgregar(articulo_seleccionado);
+                form_modificar.Text = "Modificar Articulo";
                 form_modificar.ShowDialog();
+                CargarDgv();
             }
         }
         private bool validarSeleccionado()
@@ -107,25 +110,23 @@ namespace Vista
                         return;
                     articulo_negocio.EliminarArticulo(articulo_seleccionado);
                     Helper.ResultadoCarga(true, "La eliminacion fue exitosa");
+                    CargarDgv();
                 }
             }
             catch (Exception ex)
             {
                 Helper.ResultadoCarga(false, ex.ToString());
             }
-            
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (Helper.ValidarComboBoxes(cboMarca, cboCategoria))
-                    return;
-                int id_marca = Helper.DevolverIdMarca(cboMarca);
-                int id_categoria = Helper.DevolverIdCategoria(cboCategoria);
+                Marca marca = (Marca)cboMarca.SelectedItem;
+                Categoria categoria = (Categoria)cboCategoria.SelectedItem;
                 List<Articulo> lista_filtrada = lista_articulos
-                .Where(articulo => articulo.Marca.Id == id_marca && articulo.Categoria.Id == id_categoria)
+                .Where(articulo => articulo.Marca.Id == marca.Id && articulo.Categoria.Id == categoria.Id)
                 .ToList();
                 dgvArticulos.DataSource = lista_filtrada;
                 OcultarColumnas();
@@ -135,10 +136,7 @@ namespace Vista
             {
                 MessageBox.Show(ex.ToString());
             }
-            
-            
         }
-
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             cboCategoria.Items.Clear();
@@ -163,5 +161,6 @@ namespace Vista
             dgvArticulos.DataSource = lista_filtrada;
             OcultarColumnas();
         }
+
     }
 }

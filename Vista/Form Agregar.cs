@@ -14,92 +14,68 @@ namespace Vista
 {
     public partial class FormAgregar : Form
     {
-        private Articulo nuevo_articulo = new Articulo();
+        private Articulo articulo = null;    
         public FormAgregar()
         {
             InitializeComponent();
+        }
+        public FormAgregar(Articulo articulo)
+        {
+            InitializeComponent();
+            this.articulo = articulo; 
         }
 
         private void FormAgregar_Load(object sender, EventArgs e)
         {
             Helper.AgregarItemsComboBoxes(cboMarca, cboCategoria);
             Helper.CargarImagenPbo(pboImagenAgregar, txtUrlImagen.Text);
-        }
-        private bool ValidarComboBoxes()
-        {
-            try
+            if (articulo != null)
             {
-                if (cboMarca.SelectedItem == null)
-                {
-                    MessageBox.Show("El campo MARCA es requerido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return true;
-                }
-                else if (cboCategoria.SelectedItem == null)
-                {
-                    MessageBox.Show("El campo CATEGORIA es requerido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return true;
-                }
-                else
-                {
-                    switch (cboMarca.SelectedIndex)
-                    {
-                        case 0: // Samsung
-                            nuevo_articulo.Marca.Id = 1;
-                            break;
-                        case 1: // Apple
-                            nuevo_articulo.Marca.Id = 2;
-                            break;
-                        case 2: // Sony
-                            nuevo_articulo.Marca.Id = 3;
-                            break;
-                        case 3: // Huawei
-                            nuevo_articulo.Marca.Id = 4;
-                            break;
-                        default: // Motorola
-                            nuevo_articulo.Marca.Id = 5;
-                            break;
-                    }
-                    switch (cboCategoria.SelectedIndex)
-                    {
-                        case 0: // Celulares
-                            nuevo_articulo.Categoria.Id = 1;
-                            break;
-                        case 1: // Televisores
-                            nuevo_articulo.Categoria.Id = 2;
-                            break;
-                        case 2: // Media
-                            nuevo_articulo.Categoria.Id = 3;
-                            break;
-                        default: // Audio
-                            nuevo_articulo.Marca.Id = 4;
-                            break;
-                    }
-                }
-                return false;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
+                txtCodigo.Text = articulo.CodigoArticulo;
+                txtNombre.Text = articulo.Nombre;
+                txtDescripcion.Text = articulo.Descripcion;
+                cboMarca.ValueMember = "Id";
+                cboMarca.DisplayMember = "Descripcion";
+                cboMarca.SelectedValue = articulo.Marca.Id;
+                cboCategoria.ValueMember = "Id";
+                cboCategoria.DisplayMember = "Descripcion";
+                cboCategoria.SelectedValue = articulo.Categoria.Id;
+                txtUrlImagen.Text = articulo.Imagen;
+                txtPrecio.Text = articulo.Precio.ToString();
+                Helper.CargarImagenPbo(pboImagenAgregar, articulo.Imagen);
             }
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            ArticuloNegocio articulo_negocio = new ArticuloNegocio();
             try
             {
-                nuevo_articulo.CodigoArticulo = txtCodigo.Text;
-                nuevo_articulo.Nombre = txtNombre.Text;
-                nuevo_articulo.Descripcion = txtDescripcion.Text;
-                nuevo_articulo.Imagen = txtUrlImagen.Text;
-                nuevo_articulo.Precio = decimal.Parse(txtPrecio.Text);
-                if (ValidarComboBoxes())
-                    return;
-                ArticuloNegocio articulo_negocio = new ArticuloNegocio();
-                articulo_negocio.AgregarArticulo(nuevo_articulo);
-                Helper.ResultadoCarga(true, "Carga del artículo fue exitosa.");
+                if (articulo == null)
+                    articulo = new Articulo();
+                articulo.CodigoArticulo = txtCodigo.Text;
+                articulo.Nombre = txtNombre.Text;
+                articulo.Descripcion = txtDescripcion.Text;
+                articulo.Imagen = txtUrlImagen.Text;
+                articulo.Precio = decimal.Parse(txtPrecio.Text);
+                articulo.Marca = (Marca)cboMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
+
+                if (articulo.Id != 0)
+                {
+                    articulo_negocio.ModificarArticulo(articulo);
+                    Helper.ResultadoCarga(true, "La modificacion del artículo fue exitosa.");
+                    Close();
+                }
+                else
+                {
+                    articulo_negocio.AgregarArticulo(articulo);
+                    Helper.ResultadoCarga(true, "La carga del artículo fue exitosa.");
+                    Close();
+                }
             }
             catch (Exception)
             {
-                Helper.ResultadoCarga(false, "La carga del artículo no fue exitosa. Por favor, inténtalo de nuevo.");
+                Helper.ResultadoCarga(false, "Ha ocurrido un error. Por favor, inténtalo de nuevo.");
             }
         }
         private void txtUrlImagen_TextChanged(object sender, EventArgs e)

@@ -98,11 +98,10 @@
             // cboMarca
             // 
             this.cboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboMarca.FormattingEnabled = true;
             this.cboMarca.Location = new System.Drawing.Point(128, 334);
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(107, 21);
-            this.cboMarca.TabIndex = 5;
+            this.cboMarca.TabIndex = 15;
             // 
             // btnVerDetalles
             // 
@@ -136,7 +135,6 @@
             // 
             // cboCategoria
             // 
-            this.cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategoria.FormattingEnabled = true;
             this.cboCategoria.Location = new System.Drawing.Point(15, 334);
             this.cboCategoria.Name = "cboCategoria";

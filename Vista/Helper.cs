@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,77 +23,10 @@ namespace Vista
         }
         public static void AgregarItemsComboBoxes(ComboBox cboMarca, ComboBox cboCategoria)
         {
-            cboMarca.Items.Add("Samsung");
-            cboMarca.Items.Add("Apple");
-            cboMarca.Items.Add("Sony");
-            cboMarca.Items.Add("Huawei");
-            cboMarca.Items.Add("Motorola");
-
-            cboCategoria.Items.Add("Celulares");
-            cboCategoria.Items.Add("Televisores");
-            cboCategoria.Items.Add("Media");
-            cboCategoria.Items.Add("Audio");
+            ArticuloNegocio articulo_negocio = new ArticuloNegocio();
+            cboMarca.DataSource = articulo_negocio.CrearListaMarca();
+            cboCategoria.DataSource = articulo_negocio.CrearListaCategoria();
         }
-
-        public static bool ValidarComboBoxes(ComboBox cboMarca, ComboBox cboCategoria)
-        {
-            if (cboMarca.SelectedItem == null)
-            {
-                MessageBox.Show("El campo MARCA es requerido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return true;
-            }
-            else if (cboCategoria.SelectedItem == null)
-            {
-                MessageBox.Show("El campo CATEGORIA es requerido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return true;
-            }
-            return false;
-        } 
-        
-        public static int DevolverIdMarca(ComboBox cboMarca)
-        {
-            int id_marca = 0;
-            switch (cboMarca.SelectedIndex)
-            {
-                case 0: // Samsung
-                    id_marca = 1;
-                    break;
-                case 1: // Apple
-                    id_marca = 2;
-                    break;
-                case 2: // Sony
-                    id_marca = 3;
-                    break;
-                case 3: // Huawei
-                    id_marca = 4;
-                    break;
-                default: // Motorola
-                    id_marca = 5;
-                    break;
-            }
-            return id_marca;
-        }
-        public static int DevolverIdCategoria(ComboBox cboCategoria)
-        {
-            int id_categoria = 0;
-            switch (cboCategoria.SelectedIndex)
-            {
-                case 0: // Celulares
-                    id_categoria = 1;
-                    break;
-                case 1: // Televisores
-                    id_categoria = 2;
-                    break;
-                case 2: // Media
-                    id_categoria = 3;
-                    break;
-                default: // Audio
-                    id_categoria = 4;
-                    break;
-            }
-            return id_categoria;
-        }
-
         public static void ResultadoCarga(bool respuesta, string mensaje)
         {
             if (respuesta)
@@ -100,7 +34,6 @@ namespace Vista
             else
                 MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
         public static bool Advertencia(string mensaje, string titulo)
         { 
             DialogResult resultado = MessageBox.Show(mensaje, titulo, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
