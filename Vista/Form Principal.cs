@@ -139,8 +139,6 @@ namespace Vista
         }
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            cboCategoria.Items.Clear();
-            cboMarca.Items.Clear();
             dgvArticulos.DataSource = lista_articulos;
             OcultarColumnas();
             Helper.AgregarItemsComboBoxes(cboMarca, cboCategoria);

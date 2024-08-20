@@ -14,7 +14,7 @@ namespace Vista
 {
     public partial class FormAgregar : Form
     {
-        private Articulo articulo = null;    
+        private Articulo articulo = null;
         public FormAgregar()
         {
             InitializeComponent();
@@ -22,7 +22,7 @@ namespace Vista
         public FormAgregar(Articulo articulo)
         {
             InitializeComponent();
-            this.articulo = articulo; 
+            this.articulo = articulo;
         }
 
         private void FormAgregar_Load(object sender, EventArgs e)
@@ -81,10 +81,31 @@ namespace Vista
         private void txtUrlImagen_TextChanged(object sender, EventArgs e)
         {
             Helper.CargarImagenPbo(pboImagenAgregar, txtUrlImagen.Text);
-        }
+        } 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite solo números, una coma y el carácter de control (como retroceso o delete)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != ',' && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Cancela el evento KeyPress
+            }
+
+            // Evita que se ingrese más de una coma
+            if (e.KeyChar == ',' && txtPrecio.Text.Contains(","))
+            {
+                e.Handled = true;
+            }
+
+            // Evita cualquier carácter de control innecesario
+            if (char.IsControl(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != (char)Keys.Delete)
+            {
+                e.Handled = true;
+            }
         }
     }
 }
