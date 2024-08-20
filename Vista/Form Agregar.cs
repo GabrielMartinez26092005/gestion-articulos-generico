@@ -1,20 +1,24 @@
-﻿using Controlador;
-using Modelo;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Controlador;
+using Modelo;
+using System.Configuration;
 
 namespace Vista
 {
     public partial class FormAgregar : Form
     {
         private Articulo articulo = null;
+        private OpenFileDialog imagen = null;
+
         public FormAgregar()
         {
             InitializeComponent();
@@ -59,19 +63,34 @@ namespace Vista
                 articulo.Precio = decimal.Parse(txtPrecio.Text);
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
-
+                if (imagen != null && !(txtUrlImagen.Text.ToUpper().Contains("HTTP")))
+                {
+                    string ruta_carpeta = ConfigurationManager.AppSettings["images-folder"];
+                    string nombre_imagen = imagen.SafeFileName;
+                    string destino = Path.Combine(ruta_carpeta, nombre_imagen);
+                    int contador = 1;
+                    string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(nombre_imagen);
+                    string extension = Path.GetExtension(nombre_imagen);
+                    while (File.Exists(destino))
+                    {
+                        string tempFileName = $"{fileNameWithoutExtension}({contador}){extension}";
+                        destino = Path.Combine(ruta_carpeta, tempFileName);
+                        contador++;
+                    }
+                    File.Copy(imagen.FileName, destino);
+                    articulo.Imagen = destino;
+                }
                 if (articulo.Id != 0)
                 {
                     articulo_negocio.ModificarArticulo(articulo);
                     Helper.ResultadoCarga(true, "La modificacion del artículo fue exitosa.");
-                    Close();
                 }
                 else
                 {
                     articulo_negocio.AgregarArticulo(articulo);
                     Helper.ResultadoCarga(true, "La carga del artículo fue exitosa.");
-                    Close();
                 }
+                Close();
             }
             catch (Exception)
             {
@@ -105,6 +124,16 @@ namespace Vista
             if (char.IsControl(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != (char)Keys.Delete)
             {
                 e.Handled = true;
+            }
+        }
+
+        private void btnImagen_Click(object sender, EventArgs e)
+        {
+            imagen = new OpenFileDialog();
+            imagen.Filter = "jpg|*.jpg;|png|*.png";
+            if (imagen.ShowDialog() == DialogResult.OK)
+            {
+                txtUrlImagen.Text = imagen.FileName;
             }
         }
     }
