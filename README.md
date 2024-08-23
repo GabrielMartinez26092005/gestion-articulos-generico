@@ -1,14 +1,14 @@
 # Trabajo Final Curso C# Nivel 2 [.Net + SQL]
 
 
-La finalidad de este proyecto es aplicar y demostrar todos los conocimientos adquiridos para obtener la certificacion del curso.
+La finalidad de este proyecto es aplicar y demostrar todos los conocimientos adquiridos en el curso para obtener la certificacion del mismo.
 
-Su funcionalidad es gestionar articulos genericos de una empresa de manera intuitiva, sencilla y rapida.
+El objetivo de la aplicacion es gestionar articulos genericos de una empresa de manera intuitiva, sencilla y rapida.
 
-Se utilizo Windows Form App .NET Framework, MySQL.
+Se utilizo Windows Form App .NET Framework y MySQL.
 
-Esta basado con el paradigma POO. Se trato de ser lo mas ordenado y eficiente posible, tambien no saturar de peticiones la DB.
+El codigo esta basado en el paradigma de programacion orientada a objetos, usando buenas practicas, siendo prolijo, eficiente y tratando de no saturar de peticiones inecesaria a la DB. Tambien esta pensado para ser un proyecto facilmente escalable en el tiempo.
 
-Contiene las validaciones necesarias para que la aplicacion no se rompa, y el usuario no envie un registro incorrecto a la DB.
+Contiene las validaciones necesarias para que la aplicacion no se rompa y el usuario no envie accidentalmente un registro incorrecto a la DB.
 
 Gabriel Martinez.
