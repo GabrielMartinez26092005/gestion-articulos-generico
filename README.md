@@ -11,4 +11,6 @@ El codigo esta basado en el paradigma de programacion orientada a objetos, usand
 
 Contiene las validaciones necesarias para que la aplicacion no se rompa y el usuario no envie accidentalmente un registro incorrecto a la DB.
 
+Para el uso correcto de la apliacion, ademas de su respectiva instalacion, se debe crear una carpeta llamada "Imagenes_TPFinalNivel2_GabrielMartinez" en la direccion "C:", aqui se guardaran las imagenes locales.
+
 Gabriel Martinez.
