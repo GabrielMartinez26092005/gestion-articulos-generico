@@ -23,15 +23,15 @@ namespace Vista
         private void Detalles_Load(object sender, EventArgs e)
         {
             Helper.CargarImagenPbo(pboImagenDetalles, articulo.Imagen);
-            lblId.Text = "ID: " + articulo.Id;
-            lblCodigo.Text = "CODIGO: " + articulo.CodigoArticulo;
-            lblNombre.Text = "NOMBRE: " + articulo.Nombre;
-            lblDescripcion.Text = "DESCRIPCION: " + articulo.Descripcion;
-            lblMarcaDescripcion.Text = "MARCA: " + articulo.Marca;
-            lblMarcaId.Text = "MARCA ID: " + articulo.Marca.Id;
-            lblCategoriaDescripcion.Text = "CATEGORIA: " + articulo.Categoria;
-            lblCategoriaId.Text = "CATEGORIA ID: " + articulo.Categoria.Id;
-            lblPrecio.Text = "PRECIO: $" + articulo.Precio;
+            lblIdResultado.Text = articulo.Id.ToString();
+            lblCodigoResultado.Text = articulo.CodigoArticulo;
+            lblNombreResultado.Text = articulo.Nombre;
+            lblDescripcionResultado.Text = articulo.Descripcion;
+            lblMarcaDescripcionResultado.Text = articulo.Marca.Descripcion;
+            lblMarcaIdResultado.Text = articulo.Marca.Id.ToString();
+            lblCategoriaDescripcionResultado.Text = articulo.Categoria.Descripcion;
+            lblCategoriaIdResultado.Text = articulo.Categoria.Id.ToString();
+            lblPrecioResultado.Text = articulo.Precio.ToString();
         }
     }
 }

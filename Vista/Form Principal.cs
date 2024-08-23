@@ -76,7 +76,8 @@ namespace Vista
         {
             FormAgregar form_agregar = new FormAgregar();
             form_agregar.ShowDialog();
-            CargarDgv();
+            if(form_agregar.ActualizarDGV())
+                CargarDgv();
         }
         
 
@@ -88,7 +89,8 @@ namespace Vista
                 FormAgregar form_modificar = new FormAgregar(articulo_seleccionado);
                 form_modificar.Text = "Modificar Articulo";
                 form_modificar.ShowDialog();
-                CargarDgv();
+                if(form_modificar.ActualizarDGV())
+                    CargarDgv();
             }
         }
         private bool validarSeleccionado()
@@ -146,11 +148,11 @@ namespace Vista
 
         private void txtFiltrarNombre_TextChanged(object sender, EventArgs e)
         {
-            string filtro = txtFiltrarNombre.Text.Trim();
+            string filtro = txtFiltrarNombre.Text.Trim().ToLower();
             List<Articulo> lista_filtrada;
             if (!string.IsNullOrWhiteSpace(filtro))
             {
-                lista_filtrada = lista_articulos.FindAll(articulo => articulo.Nombre.ToLower().Contains(filtro.ToLower()));
+                lista_filtrada = lista_articulos.FindAll(articulo => articulo.Nombre.ToLower().Contains(filtro));
             }
             else
             {
