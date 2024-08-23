@@ -19,7 +19,6 @@ namespace Vista
         private Articulo articulo = null;
         private OpenFileDialog imagen = null;
         private bool recargar_dgv = false;
-
         public FormAgregar()
         {
             InitializeComponent();
@@ -33,12 +32,10 @@ namespace Vista
         {
             return recargar_dgv;
         }
-
         private void FormAgregar_Load(object sender, EventArgs e)
         {
             Helper.AgregarItemsComboBoxes(cboMarca, cboCategoria);
             Helper.CargarImagenPbo(pboImagenAgregar, txtUrlImagen.Text);
-            
             if (articulo != null)
             {
                 txtCodigo.Text = articulo.CodigoArticulo;
@@ -55,12 +52,10 @@ namespace Vista
                 Helper.CargarImagenPbo(pboImagenAgregar, articulo.Imagen);
             }
         }
-        
         private void txtUrlImagen_TextChanged(object sender, EventArgs e)
         {
             Helper.CargarImagenPbo(pboImagenAgregar, txtUrlImagen.Text);
         } 
-
         private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Permite solo números, una coma y el carácter de control (como retroceso o delete)
@@ -81,7 +76,6 @@ namespace Vista
                 e.Handled = true;
             }
         }
-
         private void btnImagen_Click(object sender, EventArgs e)
         {
             imagen = new OpenFileDialog();
@@ -91,12 +85,13 @@ namespace Vista
                 txtUrlImagen.Text = imagen.FileName;
             }
         }
-
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio articulo_negocio = new ArticuloNegocio();
             try
             {
+                if (ValidarEntradas())
+                    return;
                 if (articulo == null)
                     articulo = new Articulo();
                 articulo.CodigoArticulo = txtCodigo.Text;
@@ -146,6 +141,41 @@ namespace Vista
         {
             Close();
         }
-       
+        private bool ValidarEntradas()
+        {
+            if (txtCodigo.Text == "")
+            {
+                Helper.Advertencia("El campo CODIGO es requerido.", "Advertencia");
+                return true;
+            }
+            else if (txtNombre.Text == "")
+            {
+                Helper.Advertencia("El campo NOMBRE es requerido.", "Advertencia");
+                return true;
+            }
+            else if (txtPrecio.Text == "" || txtPrecio.Text == ",")
+            {
+                Helper.Advertencia("El campo PRECIO es requerido.", "Advertencia");
+                return true;
+            }
+            else
+                return false;
+
+        }
+        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+        private void txtDescripcion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
     }
 }

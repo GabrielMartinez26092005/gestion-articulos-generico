@@ -19,7 +19,6 @@ namespace Vista
             InitializeComponent();
             this.articulo = articulo_actual;
         }
-
         private void Detalles_Load(object sender, EventArgs e)
         {
             Helper.CargarImagenPbo(pboImagenDetalles, articulo.Imagen);

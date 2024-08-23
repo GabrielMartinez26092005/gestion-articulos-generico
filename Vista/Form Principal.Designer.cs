@@ -102,6 +102,7 @@
             this.txtFiltrarNombre.Size = new System.Drawing.Size(162, 20);
             this.txtFiltrarNombre.TabIndex = 1;
             this.txtFiltrarNombre.TextChanged += new System.EventHandler(this.txtFiltrarNombre_TextChanged);
+            this.txtFiltrarNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFiltrarNombre_KeyPress);
             // 
             // cboMarca
             // 

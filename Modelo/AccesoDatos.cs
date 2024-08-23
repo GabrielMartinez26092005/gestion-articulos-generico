@@ -12,26 +12,20 @@ namespace Negocio
         private SqlConnection conexion;
         private SqlCommand comando;
         private SqlDataReader lector;
-
-
         public SqlDataReader Lector
         {
             get { return lector; }
         }
-
-
         public AccesoDatos()
         {
             conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true");
             comando = new SqlCommand();
         }
-
         public void SetearConsulta(string consulta)
         {
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = consulta;
         }
-
         public void EjecutarConexion()
         {
             comando.Connection = conexion;
@@ -45,7 +39,6 @@ namespace Negocio
                 throw ex;
             }
         }
-
         public void EjecutarAccion()
         {
             comando.Connection = conexion;
@@ -60,12 +53,10 @@ namespace Negocio
                 throw ex;
             }
         }
-
         public void SetearParametro(string nombre, object valor)
         {
             comando.Parameters.AddWithValue(nombre, valor);
         }
-
         public void CerrarConexion()
         {
             if (lector != null)

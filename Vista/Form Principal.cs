@@ -19,7 +19,6 @@ namespace Vista
         {
             InitializeComponent();
         }
-
         private void Principal_Load(object sender, EventArgs e)
         {
             CargarDgv();
@@ -61,7 +60,6 @@ namespace Vista
                 Helper.CargarImagenPbo(pboImagenPrincipal, actual.Imagen);
             }
         }
-
         private void btnVerDetalles_Click(object sender, EventArgs e)
         {
             if (!validarSeleccionado())
@@ -71,7 +69,6 @@ namespace Vista
                 FormDetalles.ShowDialog();
             }
         }
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             FormAgregar form_agregar = new FormAgregar();
@@ -79,8 +76,6 @@ namespace Vista
             if(form_agregar.ActualizarDGV())
                 CargarDgv();
         }
-        
-
         private void btnModificar_Click(object sender, EventArgs e)
         {
             if (!validarSeleccionado())
@@ -99,7 +94,6 @@ namespace Vista
                 return false;
             return true;
         }
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
@@ -120,7 +114,6 @@ namespace Vista
                 Helper.ResultadoCarga(false, ex.ToString());
             }
         }
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             try
@@ -145,7 +138,6 @@ namespace Vista
             OcultarColumnas();
             Helper.AgregarItemsComboBoxes(cboMarca, cboCategoria);
         }
-
         private void txtFiltrarNombre_TextChanged(object sender, EventArgs e)
         {
             string filtro = txtFiltrarNombre.Text.Trim().ToLower();
@@ -161,6 +153,10 @@ namespace Vista
             dgvArticulos.DataSource = lista_filtrada;
             OcultarColumnas();
         }
-
+        private void txtFiltrarNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
     }
 }

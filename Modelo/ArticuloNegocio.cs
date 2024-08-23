@@ -132,7 +132,6 @@ namespace Modelo
                 datos.CerrarConexion();
             }
         }
-
         public void ModificarArticulo(Articulo articulo_modificado)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -159,7 +158,6 @@ namespace Modelo
                 datos.CerrarConexion();
             }
         }
-
         public void EliminarArticulo(Articulo articulo_seleccionado)
         {
             AccesoDatos datos = new AccesoDatos();
